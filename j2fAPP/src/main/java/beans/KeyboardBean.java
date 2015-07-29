@@ -4,9 +4,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.io.IOException;
 
-/**
- * Created by Connectis2015 on 2015-07-25.
- */
 
 @ManagedBean
 @SessionScoped
