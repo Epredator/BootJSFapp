@@ -1,5 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <!--Place all Spring, JSF, Hibernate, Primefaces, DB Driver and C3p0 dependencies-->
+    <!--in Maven’s pom.xml.-->
+    <!--In this example I choose DB2 as my DB driver.-->
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.itcuties.examples.webapps.simplejsf</groupId>
     <artifactId>simple-jsf2-with-primefaces</artifactId>
@@ -118,6 +121,27 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <version>${spring.version}</version>
+        </dependency>
+        <!-- Hibernate dependencies -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>4.1.0.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>3.12.1.GA</version>
+        </dependency>
+        <dependency>
+            <groupId>c3p0</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>0.9.1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.jt400</groupId>
+            <artifactId>jt400-full</artifactId>
+            <version>5.3</version>
         </dependency>
         <!-- Dependencies needed by the file upload -->
         <!-- Commons Fileupload -->

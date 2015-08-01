@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+       <!--
+       Spring Application Context’ s content is shown as follows.
+       In this file, we mainly configure our datasource,
+       hibernate session factory using C3P0 connection pooling and all remaining spring parameters.
+        -->
+       <context:component-scan base-package="spring"/>
+       <context:annotation-config/>
+       <context:spring-configured/>
+       <!-- Data Source Declaration -->
+       <bean id="DataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+              <property name="driverClass" value="com.ibm.as400.access.AS400JDBCDriver" />
+              <property name="jdbcUrl" value="jdbc:as400://172.18.10.112:446/db2j2fapp" />
+              <property name="user" value="userDB2" />
+              <property name="password" value="passDB2" />
+              <property name="maxPoolSize" value="2" />
+              <property name="maxStatements" value="0" />
+              <property name="minPoolSize" value="1" />
+       </bean>
+</beans>
