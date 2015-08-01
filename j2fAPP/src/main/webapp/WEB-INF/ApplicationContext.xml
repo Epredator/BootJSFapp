@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
        <!--
        Spring Application Context’ s content is shown as follows.
@@ -21,5 +21,33 @@
               <property name="maxPoolSize" value="2" />
               <property name="maxStatements" value="0" />
               <property name="minPoolSize" value="1" />
+       </bean>
+       <!-- Session Factory Declaration -->
+       <bean id="SessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+              <property name="dataSource" ref="DataSource" />
+              <!-- <property name="packagesToScan">
+                   <list>
+                       <value>net.javabeat.spring.model</value>
+                   </list>
+               </property>-->
+              <property name="annotatedClasses">
+                     <list>
+                            <value>model.Customer</value>
+                     </list>
+              </property>
+              <property name="hibernateProperties">
+                     <props>
+                            <prop key="hibernate.dialect">org.hibernate.dialect.DB2400Dialect</prop>
+                            <prop key="hibernate.show_sql">true</prop>
+                     </props>
+              </property>
+       </bean>
+
+       <!-- Enable the configuration of transactional behavior based on annotations -->
+       <tx:annotation-driven transaction-manager="txManager"/>
+
+       <!-- Transaction Manager is defined -->
+       <bean id="txManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+              <property name="sessionFactory" ref="SessionFactory"/>
        </bean>
 </beans>
