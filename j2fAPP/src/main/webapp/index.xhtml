@@ -7,22 +7,37 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
-
+    <title>Welcome to JSFAPP for seeing PrimaFaces_SpringHibernate_Project</title>
 </h:head>
 
 <h:body>
-    <h:form enctype="multipart/form-data">
-        <p:messages showDetail="true" />c
-        <p:fileUpload value="#{imageStoreBean.file}" mode="simple"/>
-        <p:commandButton value="Submit" ajax="false" actionListener="#{imageStoreBean.storeImage}" />
-
-        <h:graphicImage id="image" alt="uploaded image" url="/image/" />
-
-
-        <p:graphicImage value="#{images.image}">
-            <f:param name="id" value="#{imageStoreBean.storeImage}" />
-        </p:graphicImage>
+    <h:form>
+        <table>
+            <tr>
+                <td><h:outputLabel for = "id" value = "Id : "/></td>
+                <td><p:inputText id = "id" value = "#{customerMB.id}">
+                     <f:converter converterId="javax.faces.Integer"/>
+                     <p:ajax event="blur" update="idMsg" />
+                    </p:inputText>
+                    <p:message id="ïdMsg" for="id" display="ïcon"/>
+                    </td>
+            </tr>
+            <tr>
+                <td>
+                    <h:outputLabel for="name" value="Name : "/>
+                </td>
+                <td><p:inputText id="name" value="#{customerMB.name}">
+                    <f:validateLength minimum="5" />
+                    <p:ajax event="blur" update="surnameMsg" />
+                </p:inputText>
+                <p:message id="surnameMsg" for="surname" display="icon"/>
+                </td>
+            </tr>
+            <tr>
+                <td><p:commandButton id="addUser" value="Add" action="#{customerMB.addCustomer}" ajax="false"/> </td>
+                <td><p:commandButton id="reset" value="Reset" action="#{customerMB.reset}" ajax="false"/> </td>
+            </tr>
+        </table>
     </h:form>
-
-</h:body>
+ </h:body>
 </html>
