@@ -11,7 +11,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@ManagedBean(name="customerMB")
+@ManagedBean(name = "customerMB")
 @RequestScoped
 public class CustomerManagedBean implements Serializable {
 
@@ -20,15 +20,15 @@ public class CustomerManagedBean implements Serializable {
     private static final String ERROR = "error";
 
     //spring customer service is injected
-    @ManagedProperty(value="#{CustomerService")
+    @ManagedProperty(value = "#{CustomerService")
     CustomerService customerService;
     List<Customer> customerList;
 
-    private  int id;
+    private int id;
     private String name;
     private String surname;
 
-    public String addCustomer(){
+    public String addCustomer() {
         try {
             Customer customer = new Customer();
             customer.setId(getId());
@@ -36,19 +36,19 @@ public class CustomerManagedBean implements Serializable {
             customer.setSurname(getSurname());
             getCustomerService().addCustomer(customer);
             return SUCCESS;
-        } catch (DataAccessException e){
+        } catch (DataAccessException e) {
             e.printStackTrace();
         }
         return ERROR;
     }
 
-    public void reset(){
+    public void reset() {
         this.setId(0);
         this.setName("");
         this.setSurname("");
     }
 
-    public List<Customer> getCustomerList(){
+    public List<Customer> getCustomerList() {
         customerList = new ArrayList<Customer>();
         customerList.addAll((getCustomerService().getCustomers()));
         return customerList;
@@ -70,7 +70,7 @@ public class CustomerManagedBean implements Serializable {
         return customerService;
     }
 
-    public void setCustomerService(CustomerService customerService){
+    public void setCustomerService(CustomerService customerService) {
         this.customerService = customerService;
     }
 

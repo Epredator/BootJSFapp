@@ -2,12 +2,11 @@ package beans;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import java.io.IOException;
 
 
 @ManagedBean
 @SessionScoped
-public class KeyboardBean  {
+public class KeyboardBean {
     private String value;
 
     public String getValue() {

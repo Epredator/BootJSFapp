@@ -27,22 +27,22 @@ public class CustomerDAO {
         getSessionFactory().getCurrentSession().save(customer);
     }
 
-    public void deleteCustomer(Customer customer){
+    public void deleteCustomer(Customer customer) {
         getSessionFactory().getCurrentSession().delete(customer);
     }
 
-    public void updateCustomer(Customer customer){
+    public void updateCustomer(Customer customer) {
         getSessionFactory().getCurrentSession().update(customer);
     }
 
-    public Customer getCustomerById(int id){
+    public Customer getCustomerById(int id) {
         List list = getSessionFactory().getCurrentSession()
                 .createQuery("from Customer where id = ?")
                 .setParameter(0, id).list();
         return (Customer) list.get(0);
     }
 
-    public List<Customer> getCustomers(){
+    public List<Customer> getCustomers() {
         List list = getSessionFactory().getCurrentSession().createQuery(
                 "from Customer"
         ).list();

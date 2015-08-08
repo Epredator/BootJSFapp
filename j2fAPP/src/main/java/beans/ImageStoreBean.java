@@ -6,11 +6,9 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 @ManagedBean
 @RequestScoped
@@ -38,7 +36,7 @@ public class ImageStoreBean {
             statement.executeUpdate();
 
             // Commit & close
-            connection.commit();	// when autocommit=false
+            connection.commit();    // when autocommit=false
             connection.close();
 
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Upload success", file.getFileName() + " is uploaded in ");

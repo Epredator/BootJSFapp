@@ -5,7 +5,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class ImageServlet extends HttpServlet {
 
@@ -29,7 +32,7 @@ public class ImageServlet extends HttpServlet {
 
             ResultSet rs = statement.executeQuery();
 
-            while (rs.next()) {	// This will run only once
+            while (rs.next()) {    // This will run only once
                 imageBytes = rs.getBytes("file");
             }
 
